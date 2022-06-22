@@ -1,4 +1,4 @@
-// Agregar el botón de importar usuarios
+<? // Agregar el botón de importar usuarios ?>
 
 
 <?php session_start();
@@ -19,12 +19,15 @@
     <?php
         if (!isset($_SESSION['username'])) {
     ?>
-        <form align="center" action="views/login.php" method="get">
+        <form align="center" action="logs/login.php" method="get">
             <input type="submit" value="Iniciar sesión">
+        </form>
+        <form align="center" action=".php" method="post">
+            <input type="submit" value="Importar usuarios">
         </form>
 
     <?php } else { ?>
-        <form align="center" action="views/logout.php" method="post">
+        <form align="center" action="logs/logout.php" method="post">
             <input type="submit" value="Cerrar sesión">
         </form>
         
