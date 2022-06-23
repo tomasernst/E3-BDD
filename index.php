@@ -5,19 +5,17 @@
 ?>
 
 
-<?php session_start();
+
+<body>
+    <h1> Entrega 3 - Grupos 7 y 122 </h1>
+    <br>
+    <?php session_start();
     if (isset($_SESSION['username'])){
         echo "Bienvenido/a: ";
         echo $_SESSION['username'];
     }
     // USERNAME (?)
 ?>
-
-
-
-<body>
-    <h1> Entrega 3 - Grupos 7 y 122 </h1>
-    <br>
     <?php
         if (!isset($_SESSION['username'])) {
     ?>
