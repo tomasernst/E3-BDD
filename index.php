@@ -1,4 +1,8 @@
-<? // Agregar el botón de importar usuarios ?>
+<?php // Agregar el botón de importar usuarios ?>
+
+<?php
+    include("/home/grupo7/Sites/templates/header.html");
+?>
 
 
 <?php session_start();
@@ -9,9 +13,7 @@
     // USERNAME (?)
 ?>
 
-<?php
-    include("templates/header.html");
-?>
+
 
 <body>
     <h1> Entrega 3 - Grupos 7 y 122 </h1>
