@@ -1,3 +1,13 @@
+-- Importante tabla usuarios
+CREATE IF NOT EXISTS Usuarios (
+    id       serial PRIMARY KEY,
+    username varchar(40),
+    contraseña varchar(20),
+    tipo     varchar(20)
+);
+-- NOTA: no me deja utilizar password (?), tuve que poner contraseña
+-- Resto de las tablas servidor
+
 CREATE TABLE IF NOT EXISTS Vuelo (
     vuelo_id         integer,
     fecha_salida     varchar(30),
