@@ -14,7 +14,7 @@
         echo "Bienvenido/a: ";
         echo $_SESSION['username'];
     }
-    // USERNAME (?)
+    
 ?>
     <?php
         if (!isset($_SESSION['username'])) {
