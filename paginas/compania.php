@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
+
 <?php include('templates/header.html'); ?>
 
 <body>
 <?php
-        require("../config/conection.php");
+        require("/home/grupo7/Sites/templates/header.html");
       
         // $query = "SELECT *
         $query = "SELECT vuelo_id, fecha_salida, a_salida, fecha_llegada, a_llegada, estado
@@ -76,5 +75,5 @@
     </table>
     
 
-    <?php include('templates/footer.html'); ?>
+    <?php include("/home/grupo7/Sites/templates/footer.html"); ?>
 </html>

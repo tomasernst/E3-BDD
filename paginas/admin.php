@@ -9,7 +9,7 @@
 
 <?php
         echo "<h6>Ingrese en formato yyyy-mm-dd</h6>"
-        require("conection.php");
+        require("connection.php");
         $fecha1 = $_POST["fecha1"] ; 
         $fecha2 = $_POST["fecha2"] ; 
  
