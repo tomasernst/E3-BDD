@@ -1,14 +1,14 @@
-
-<?php include('templates/header.html'); ?>
+<h3>COMPAÑIA</h3>
+<?php include('/home/grupo7/Sites/templates/header.html'); ?>
 
 <body>
 <?php
-        require("/home/grupo7/Sites/templates/header.html");
+        require("/home/grupo7/Sites/config/connection.php");
       
-        // $query = "SELECT *
+        // cambiar a nombre_compania = usuario (de tipo compañía activo) LATAM era para probar
         $query = "SELECT vuelo_id, fecha_salida, a_salida, fecha_llegada, a_llegada, estado
                   FROM Vuelo
-                  WHERE nombre_compania = '...';"; 
+                  WHERE nombre_compania = 'LATAM ECUADOR';"; 
         $result = $db -> prepare($query);
         $result -> execute();
 
@@ -30,7 +30,7 @@
 
         <?php
             foreach ($data as $d) {
-                if (d[5] == 'aprobado'){
+                if ($d[5] == "aceptado"){
                     echo "<tr>
                             <td>$d[0]</td>
                             <td>$d[1]</td>
@@ -60,7 +60,7 @@
 
         <?php
             foreach ($data as $d) {
-                if (d[5] == 'rechazado'){
+                if ($d[5] == "pendiente"){
                     echo "<tr>
                             <td>$d[0]</td>
                             <td>$d[1]</td>
@@ -76,4 +76,6 @@
     
 
     <?php include("/home/grupo7/Sites/templates/footer.html"); ?>
+
+<?php // ?>
 </html>

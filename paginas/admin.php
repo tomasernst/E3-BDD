@@ -1,3 +1,5 @@
+<h3>ADMIN DGAC</h3>
+<?php include("/home/grupo7/Sites/templates/header.html"); ?>
 <h4>Vuelos por aprobar según fecha</h4>
     <form action="admin.php" method="post">
         Fecha mínima: <input type="text" name="fecha1" />
@@ -8,8 +10,8 @@
     </form>
 
 <?php
-        echo "<h6>Ingrese en formato yyyy-mm-dd</h6>"
-        require("connection.php");
+        echo "<h5> Ingrese en formato yyyy-mm-dd</h5>";
+        require("/home/grupo7/Sites/config/connection.php");
         $fecha1 = $_POST["fecha1"] ; 
         $fecha2 = $_POST["fecha2"] ; 
  
@@ -44,10 +46,7 @@
         <?php
             foreach ($data as $d) {
                 echo "<tr>
-                        <td>
-                            <form method="POST" action="ver_propuesta.php">
-                                <input type="button" name="ID" value="$d[0]"/>
-                            </form>
+                        <td> $d[0]
                         </td>
                         <td>$d[1]</td>
                         <td>$d[2]</td>
@@ -59,8 +58,17 @@
                         <td>$d[8]</td>
                         <td>$d[9]</td>
                         <td>$d[10]</td>
-                        <td>$d[11]</td>";
+                    </tr>";
             }
         ?>
-
     </table>
+    
+    <?php
+        /* <form method="POST" action="ver_propuesta.php">
+                <input type="button" name="ID" value="$d[0]"/>
+            </form>
+        */       
+    ?>
+    
+
+    <?php include("/home/grupo7/Sites/templates/footer.html"); ?>
