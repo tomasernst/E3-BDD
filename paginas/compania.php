@@ -1,5 +1,6 @@
+<?php include("/home/grupo7/Sites/templates/header.html"); ?>
 <h3>COMPAÑIA</h3>
-<?php include('/home/grupo7/Sites/templates/header.html'); ?>
+
 
 <body>
 <?php   

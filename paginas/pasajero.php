@@ -1,5 +1,6 @@
-<h3>PASAJERO</h3>
 <?php include("/home/grupo7/Sites/templates/header.html"); ?>
+<h3>PASAJERO</h3>
+
 <?php
     session_start();
     require("/home/grupo7/Sites/config/connection.php");

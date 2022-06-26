@@ -1,5 +1,7 @@
-<h3>ADMIN DGAC</h3>
 <?php include("/home/grupo7/Sites/templates/header.html"); ?>
+<h3>ADMIN DGAC</h3>
+<link rel="stylesheet" href="styles/style.css">
+
 <h4>Vuelos por aprobar según fecha</h4>
     <form action="admin.php" method="post">
         Fecha mínima: <input type="text" name="fecha1" />

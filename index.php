@@ -38,7 +38,7 @@
             </form>
         <?php } elseif ($_SESSION['tipo'] == 'Compania') {?>
             <form align="center" action="paginas/compania.php" method="get">
-                <input type="submit" value="Pestaña compañia">
+                <!-- <input type="submit" value="Pestaña compañia"> -->
                 <button name="username" type= "submit" value=$username>Pestaña compañia</button>
             </form>
         <?php } elseif ($_SESSION['tipo'] == 'Pasajero') { ?>

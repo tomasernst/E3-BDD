@@ -1,4 +1,4 @@
-
+<?php include("/home/grupo7/Sites/templates/header.html"); ?>
 <?php
     // Inspiado de https://stackoverflow.com/questions/12166494/execute-sql-query-on-button-click
     

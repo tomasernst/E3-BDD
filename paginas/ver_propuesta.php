@@ -1,4 +1,4 @@
-
+<?php include("/home/grupo7/Sites/templates/header.html"); ?>
 <?php
 // Primero imprimo la la consulta 
 
