@@ -51,11 +51,11 @@
 
     <?php // Cargamos los datos para el drop down
     
-    $query_1 = "SELECT aerodromo_salida_id, fecha_salida, aerodromo_llegada_id
-                FROM propuestas
+    $query_1 = "SELECT DISTINCT a_salida
+                FROM vuelo 
                 WHERE estado = 'aceptado'"; //ORIGEN
 
-    $result1 = $db2 -> prepare($query_1);
+    $result1 = $db -> prepare($query_1);
     $result1 -> execute();
 
     $data_origen = $result1 -> fetchAll();
@@ -82,14 +82,14 @@
     </table>
         -->
     <?php 
-    $query_2 = "SELECT aerodromo_llegada_id
-                FROM propuestas
-                WHERE estado = 'aceptado'"; //DESTINO
+    $query_2 = "SELECT DISTINCT a_llegada, fecha_salida
+                FROM vuelo 
+                WHERE estado = 'aceptado'"; //Destino
 
-    $result2 = $db2 -> prepare($query_2);
-    $result2 -> execute();
+    $result_2 = $db -> prepare($query_2);
+    $result_2 -> execute();
 
-    $data_destino = $result2 -> fetchAll();    
+    $data_destino = $result_2 -> fetchAll();   
     ?>
     <!--
     <table>
@@ -110,7 +110,31 @@
     -->
     
 
-<h4>Busque su vuelo</h4>    
+<h4>Busque su vuelo</h4>
+    <h3></h3>
+    <form id="origen-a" method="post">
+        <select name="origen">
+        <?php foreach ($data_origen as $d_o) {
+            echo "<option value='$d_o[0]'> $d_o[0] </option>";
+         }; ?>
+    </form>
+
+    <form id="destino-a" method="post">
+        <select name="destino">
+        <?php foreach ($data_destino as $d_d) {
+            echo "<option value='$d_d[0]'> $d_d[0] </option>";
+         }; ?>
+    </form>
+
+    <form id="fecha-inicio" method="post">
+        <select name="fecha_inicio">
+        <?php foreach ($data_destino as $d_o) {
+            echo "<option value='$d_o[1]'> $d_o[1] </option>";
+         }; ?>
+    </form>
+
+
+     <!-- <option value="$d_o"> <?php // $d_o ?> </option>-->
 
     <form action="pasajero.php" method="post">
         Ciudad origen: <input type="text" name="origen" />
@@ -130,50 +154,46 @@
         $fecha = $_POST["fecha"];
  
         
-        $query = "SELECT * 
-                  FROM propuestas 
-                  WHERE estado = 'aprobado' 
-                  AND (fecha_salida = '$fecha')
-                  AND (aerodromo_salida_id = $origen)
-                  AND (aerodromo_llegada_id = $destino);";
+        $query_vuelos = "SELECT vuelo_id, fecha_salida, a_salida, fecha_llegada, a_llegada
+                  FROM vuelo 
+                  WHERE estado = 'aceptado' 
+                  AND fecha_salida = '$fecha'
+                  AND a_salida = $origen
+                  AND a_llegada = $destino;";
         
-        $result = $db2 -> prepare($query);
-        $result -> execute();
+        $result_vuelos = $db -> prepare($query_vuelos);
+        $result_vuelos -> execute();
 
-        $data = $result -> fetchAll();
+        $data_vuelos = $result_vuelos -> fetchAll();
     ?>
     <table>
         <tr>
-            <th> ID </th>
-            <th> Estado </th>
-            <th> Codigo </th>
-            <th> Fecha salida </th>
-            <th> Hora salida </th>
-            <th> Fecha llegada </th>
-            <th> Hora llegada </th>
-            <th> Aerodromo salida </th>
-            <th> Aerodromo llegada </th>
-            <th> Codigo aeronave </th>
-            <th> Fecha envio propuesta </th>
+            <th> Vuelo ID </th>
+            <th> Fecha de salida </th>
+            <th> Aeropuerto de salida </th>
+            <th> Fecha de llegada </th>
+            <th> Aeropuerto de llegada </th>
+            <th> Reservar </th>
         </tr>
 
         <?php
-            foreach ($data as $d) {
-                echo "<tr>
-                        <td> $d[0]
-                        </td>
-                        <td>$d[1]</td>
-                        <td>$d[2]</td>
-                        <td>$d[3]</td>
-                        <td>$d[4]</td>
-                        <td>$d[5]</td>
-                        <td>$d[6]</td>
-                        <td>$d[7]</td>
-                        <td>$d[8]</td>
-                        <td>$d[9]</td>
-                        <td>$d[10]</td>
-                    </tr>"; ?>
-            <?php } ?>
-    </table>
+            foreach ($data_vuelos as $d) {
+               
+                    echo "<tr>
+                            <td>$d[0]</td>
+                            <td>$d[1]</td>
+                            <td>$d[2]</td>
+                            <td>$d[3]</td>
+                            <td>$d[4]</td>
+                            <td> 
+                            <form action='??.php' method='post'>
+                                <input name='reserva' value='Reservar' type='submit' />
+                            </form>
+                            </td>
+                         </tr>";
+            }
+        ?>
 
+    </table>
+ 
 <?php include("/home/grupo7/Sites/templates/footer.html"); ?>

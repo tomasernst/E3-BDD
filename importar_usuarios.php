@@ -65,7 +65,7 @@ function borrar_usuarios($db) {
     $result -> execute();
 }
 
-borrar_usuarios($db);
+// borrar_usuarios($db);
 
 crear_usuario_dgac($db);
 crear_usuarios_compania($db);
