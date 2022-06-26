@@ -8,6 +8,7 @@
         $query = "SELECT * 
             FROM propuestas 
             WHERE propuesta_vuelo_id = '$ID';";
+            
         $result = $db2 -> prepare($query);
         $result -> execute();
         $data = $result -> fetchAll();
@@ -47,12 +48,31 @@
         ?>
 
     </table>
-
+<h3> ¿Aceptar Propuesta de Vuelo? </h3>
   
-<form action="acep_rech.php" method="POST">
-  <p>¿Aceptar Propuesta de Vuelo?</p>
-  <p>
-    <input type="submit" name="respuesta" value="Aceptar">
-    <input type="submit" name="respuesta" value="Rechazar">
-  </p>
-</form> 
+
+
+<form action="acep_rech.php" method="GET">
+        <input type="hidden" name="respuesta" value="Aceptar"/>
+        <input type="hidden" name="id" value="<?= $ID ?>"/>
+        <button name ="submit" value="1" type="submit">Aceptar</button>
+</form>
+
+<form action="acep_rech.php" method="GET">
+        <input type="hidden" name="respuesta" value="Rechazar"/>
+        <input type="hidden" name="id" value="<?= $ID ?>"/>
+        <button name ="submit" value="1" type="submit">Rechazar</button>
+</form>
+
+
+
+
+
+
+<!-- 
+    <form action="mypage.php" method="get">
+        <input type="hidden" name="field" value="fieldname"/>
+        <input type="hidden" name="orderby" value="<?= $orderby ?>"/>
+        <button name ="submit" value="1" type="submit">&#9660;</button>
+    </form>
+--> 

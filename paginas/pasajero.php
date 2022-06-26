@@ -142,5 +142,38 @@
 
         $data = $result -> fetchAll();
     ?>
+    <table>
+        <tr>
+            <th> ID </th>
+            <th> Estado </th>
+            <th> Codigo </th>
+            <th> Fecha salida </th>
+            <th> Hora salida </th>
+            <th> Fecha llegada </th>
+            <th> Hora llegada </th>
+            <th> Aerodromo salida </th>
+            <th> Aerodromo llegada </th>
+            <th> Codigo aeronave </th>
+            <th> Fecha envio propuesta </th>
+        </tr>
+
+        <?php
+            foreach ($data as $d) {
+                echo "<tr>
+                        <td> $d[0]
+                        </td>
+                        <td>$d[1]</td>
+                        <td>$d[2]</td>
+                        <td>$d[3]</td>
+                        <td>$d[4]</td>
+                        <td>$d[5]</td>
+                        <td>$d[6]</td>
+                        <td>$d[7]</td>
+                        <td>$d[8]</td>
+                        <td>$d[9]</td>
+                        <td>$d[10]</td>
+                    </tr>"; ?>
+            <?php } ?>
+    </table>
 
 <?php include("/home/grupo7/Sites/templates/footer.html"); ?>
