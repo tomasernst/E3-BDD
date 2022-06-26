@@ -2,8 +2,10 @@
 <?php
     // Inspiado de https://stackoverflow.com/questions/12166494/execute-sql-query-on-button-click
     
-    require("conection.php");
-    require('ver_propuesta.php'); // para obtener la variable ID 
+    require("/home/grupo7/Sites/config/connection.php");
+    // require("ver_propuesta.php"); // para obtener la variable ID --> No funciona;
+    $ID = $_POST["ID"]; // Tenemos que mandar el ID desde ver propuesta.
+    echo "$ID";
 
     if(isset($_POST['boton'])){
         $respuesta = $_POST["respuesta"];
@@ -19,6 +21,7 @@
         $db2 -> prepare($query2);
 
         echo "Cambio Realizado";
+        header("paginas/admin.php");
     }
     else {
     echo"No se pudo ejecutar cambio";

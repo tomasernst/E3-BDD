@@ -6,11 +6,11 @@
         -  
         Fecha máxima: <input type="text" name="fecha2" />
         <br>
-        <input type="submit" value="Buscar!"/>
+        <input type="submit" value="Buscar"/>
     </form>
 
 <?php
-        echo "<h5> Ingrese en formato yyyy-mm-dd</h5>";
+        echo "<h4> Ingrese en formato: yyyy-mm-dd</h4>";
         require("/home/grupo7/Sites/config/connection.php");
         $fecha1 = $_POST["fecha1"] ; 
         $fecha2 = $_POST["fecha2"] ; 
@@ -41,8 +41,13 @@
             <th> Aerodromo llegada </th>
             <th> Codigo aeronave </th>
             <th> Fecha envio propuesta </th>
+            <th> Ver propuesta </th>
         </tr>
-
+    <!--
+    <form id="formulario1" action="ver_propuesta.php">
+        <p>ID: <input type="int" name="$d[0]"></p>
+    </form>
+    -->
         <?php
             foreach ($data as $d) {
                 echo "<tr>
@@ -58,17 +63,31 @@
                         <td>$d[8]</td>
                         <td>$d[9]</td>
                         <td>$d[10]</td>
-                    </tr>";
-            }
-        ?>
-    </table>
+                        <td> 
+                        <form action='ver_propuesta.php' method='post'>
+                            <input name='ID' value='$d[0]' type='submit' />
+                        </form>
+                        </td>
+                    </tr>"; ?>
+            <?php } ?>
+        
     
-    <?php
+    <?php // Esto va en el $d[0], averiguar cómo utilizarlo
         /* <form method="POST" action="ver_propuesta.php">
                 <input type="button" name="ID" value="$d[0]"/>
             </form>
+
+
+            <form action="action.php" method="post">
+                <p>Your name: <input type="text" name="name" /></p>
+                <p>Your age: <input type="text" name="age" /></p>
+                <p><input type="submit" /></p>
+            </form>
+
+            <form method='POST' action='ver_propuesta.php'>
+                <input type='button' name='ID' value='Ver propuesta'/>
+            </form> 
         */       
     ?>
     
-
-    <?php include("/home/grupo7/Sites/templates/footer.html"); ?>
+<?php include("/home/grupo7/Sites/templates/footer.html"); ?>

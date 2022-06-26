@@ -2,13 +2,15 @@
 <?php include('/home/grupo7/Sites/templates/header.html'); ?>
 
 <body>
-<?php
+<?php   
+        session_start();
         require("/home/grupo7/Sites/config/connection.php");
-      
+        // $username = $_GET["username"] ;
         // cambiar a nombre_compania = usuario (de tipo compañía activo) LATAM era para probar
+        $username = $_SESSION['username'];
         $query = "SELECT vuelo_id, fecha_salida, a_salida, fecha_llegada, a_llegada, estado
                   FROM Vuelo
-                  WHERE nombre_compania = 'LATAM ECUADOR';"; 
+                  WHERE nombre_compania = '$username';"; 
         $result = $db -> prepare($query);
         $result -> execute();
 

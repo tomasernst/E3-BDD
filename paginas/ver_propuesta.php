@@ -2,7 +2,7 @@
 <?php
 // Primero imprimo la la consulta 
 
-        require("conection.php");
+        require("/home/grupo7/Sites/config/connection.php");
         $ID = $_POST["ID"] ;
 
         $query = "SELECT * 
@@ -42,7 +42,6 @@
                         <td>$d[8]</td>
                         <td>$d[9]</td>
                         <td>$d[10]</td>
-                        <td>$d[11]</td>
                       </tr>";
             }
         ?>

@@ -1,8 +1,56 @@
 <h3>PASAJERO</h3>
+<?php include("/home/grupo7/Sites/templates/header.html"); ?>
+<?php
+    session_start();
+    require("/home/grupo7/Sites/config/connection.php");
+        // Se buscan los datos del usuario 
+        // Revisar el WHERE statement
+        $pasaporte = $_SESSION['username'];
+        $query = "SELECT nombre_pasajero 
+                  FROM pasajero
+                  WHERE pasaporte_pasajero = '$pasaporte';";
+
+        $result = $db -> prepare($query);
+        $result -> execute();
+
+        $data = $result -> fetchAll();
+
+    ?>
+    <h4>Nombre pasajero: <?php echo $data[0][0];?> </h4> 
+    <h4>Pasaporte: <?php echo $pasaporte?> </h4> 
+    <?php 
+    require("/home/grupo7/Sites/config/connection.php");
+    $queryres = "SELECT reserva_id, codigo_reserva, vuelo_id
+               FROM Reserva
+               WHERE pasaporte_comprador = '$pasaporte'";
+    
+    $resultres = $db -> prepare($queryres);
+    $resultres -> execute();
+    $datares = $resultres -> fetchAll();
+
+?>
+    <table>
+        <tr>
+            <th> ID reserva </th>
+            <th> Código reserva </th>
+            <th> ID Vuelo </th>
+        </tr>
+
+        <?php
+            foreach ($datares as $d) {
+                echo "<tr>
+                        <td>$d[0]</td>
+                        <td>$d[1]</td>
+                        <td>$d[2]</td>
+                      </tr>";
+            }
+        ?>
+
+    </table>
 
     <?php // Cargamos los datos para el drop down
-    require("/home/grupo7/Sites/config/connection.php");
-    $query_1 = "SELECT aerodromo_salida_id, fecha_salida
+    
+    $query_1 = "SELECT aerodromo_salida_id, fecha_salida, aerodromo_llegada_id
                 FROM propuestas
                 WHERE estado = 'aceptado'"; //ORIGEN
 
@@ -14,8 +62,9 @@
     <!--
     <table>
         <tr>
-            <th> ID </th>
+            <th> ID salida </th>
             <th> Fecha salida </th>
+            <th> ID llegada
         </tr>
 
         <?php
@@ -24,12 +73,13 @@
                 echo "<tr>
                         <td>$d[0] </td>
                         <td>$d[1]</td>
+                        <td>$d[2]</td>
                     </tr>";
             }
         */
         ?>
     </table>
-    -->
+        -->
     <?php 
     $query_2 = "SELECT aerodromo_llegada_id
                 FROM propuestas
@@ -57,19 +107,7 @@
         ?>
     </table>
     -->
-    <?php
- 
-        // Se buscan los datos del usuario 
-        // Revisar el WHERE statement
-        $query = "SELECT * 
-                  FROM pasajero
-                  WHERE pasaporte_pasajero = '???';";
-
-        $result = $db -> prepare($query);
-        $result -> execute();
-
-        $data = $result -> fetchAll();
-    ?>
+    
 
 <h4>Busque su vuelo</h4>    
 
@@ -80,7 +118,7 @@
         -
         Fecha despegue: <input type="text" name="fecha" />
         <br>
-        <input type="submit" value="Buscar!"/>
+        <input type="submit" value="Buscar"/>
     </form>
 
     <?php
