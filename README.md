@@ -23,3 +23,7 @@ el procedimiento para crear los nombres de usuario y las contraseñas se describ
         Contraseña: ```J46610530Andr```
 
 La importación de usuarios se produce en el archivo ```importar_usuarios.php```, donde inicialmente cada vez que se apretaba el botón se borraban todos los usuarios de la tabla e importaba nuevamente todos los usuarios con las claves randomizadas, pero por propósitos de esta entrega, se eliminó la eliminación de datos para así poder entregar un usuarios de ejemplo para la corrección.
+
+### No implementado:
+
+Para facilitar la corrección, podemos decir que no se implementó el procedimiento almacenado del botón de reserva de la pestaña de pasajero.
