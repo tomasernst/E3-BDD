@@ -111,7 +111,6 @@
     ID propuesta: <input type="text" name="propuesta_vuelo_id"><br>
     codigo: <input type="text" name="codigo"><br>
     fecha salida: <input type="text" name="fecha_salida"><br>
-    fecha salida: <input type="text" name="fecha_salida"><br>
     hora salida: <input type="text" name="hora_salida"><br>
     fecha llegada: <input type="text" name="fecha_llegada"><br>
     hora llegada: <input type="text" name="hora_llegada"><br>

@@ -29,7 +29,7 @@ Al tratar de entrar con una contraseña incorrecta tenemos el error de que se en
 
 ### Notas:
 
-* En la pestaña pasajero, para poder ver algún ejemplo de vuelo posible en la busqueda con dropdown, ponemos el siguiente ejemplo:
+* En la pestaña pasajero, para poder ver algún ejemplo de vuelo posible en la busqueda con dropdown, proponemos los siguientes ejemplos:
     * Ejemplo 1:\
         Aeródromo origen: ```39```\
         Aeródromo destino: ```61```\
@@ -39,8 +39,15 @@ Al tratar de entrar con una contraseña incorrecta tenemos el error de que se en
         Aeródromo destino: ```59```\
         Fecha despegue: ```25-06-22 15:34```
 
+* En la pestaña compañía, para poder ver algún ejemplo, proponemos las siguientes fechas:
+    * Ejemplo 1:\
+        Fecha mínima: ```2022-04-07```\
+        fecha máxima: ```2022-06-25```
+
+En la pestaña de compañías se agregó la funcionalidad de enviar propuestas de vuelo al DGAC, las que quedarán en estado pendiente.
+
 
 
 ### No implementado:
 
-Para facilitar la corrección, podemos decir que no se implementó el procedimiento almacenado del botón de reserva de la pestaña de pasajero.
+Para facilitar la corrección, podemos decir que no se implementó el procedimiento almacenado del botón de reserva de la pestaña de pasajero (Existe el botón en sí, pero no hace nada).
