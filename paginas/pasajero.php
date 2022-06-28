@@ -60,6 +60,18 @@
 
     $data_origen = $result1 -> fetchAll();
     ?>
+
+<?php // Cargamos los datos para el drop down
+    
+    $query_5 = "SELECT DISTINCT fecha_salida
+                FROM vuelo 
+                WHERE estado = 'aceptado'"; //ORIGEN
+
+    $result5 = $db -> prepare($query_5);
+    $result5 -> execute();
+
+    $data_fecha = $result5 -> fetchAll();
+    ?>
     <!--
     <table>
         <tr>
@@ -80,9 +92,10 @@
         */
         ?>
     </table>
+     fecha_salida
         -->
     <?php 
-    $query_2 = "SELECT DISTINCT a_llegada, fecha_salida
+    $query_2 = "SELECT DISTINCT a_llegada
                 FROM vuelo 
                 WHERE estado = 'aceptado'"; //Destino
 
@@ -111,47 +124,34 @@
     
 
 <h4>Busque su vuelo</h4>
-    <h3></h3>
+
+
     <form id="origen-a" method="post">
-        <select name="origen">
+    <h3> Aeródromo origen: </h3><select name="origen">
         <?php foreach ($data_origen as $d_o) {
             echo "<option value='$d_o[0]'> $d_o[0] </option>";
          }; ?>
-    </form>
-
-    <form id="destino-a" method="post">
-        <select name="destino">
+        </select>
+    <h3> Aeródromo destino: </h3><select name="destino">
         <?php foreach ($data_destino as $d_d) {
             echo "<option value='$d_d[0]'> $d_d[0] </option>";
          }; ?>
-    </form>
-
-    <form id="fecha-inicio" method="post">
-        <select name="fecha_inicio">
-        <?php foreach ($data_destino as $d_o) {
-            echo "<option value='$d_o[1]'> $d_o[1] </option>";
+         </select>
+    <h3> Fecha despegue: </h3><select name="fecha_inicio">
+        <?php foreach ($data_fecha as $d_f) {
+            echo "<option value='$d_f[0]'> $d_f[0] </option>";
          }; ?>
+         </select>
+    <input type="submit" value="Buscar"/>
     </form>
 
-
-     <!-- <option value="$d_o"> <?php // $d_o ?> </option>-->
-
-    <form action="pasajero.php" method="post">
-        Ciudad origen: <input type="text" name="origen" />
-        -  
-        Ciudad destino: <input type="text" name="destino" />
-        -
-        Fecha despegue: <input type="text" name="fecha" />
-        <br>
-        <input type="submit" value="Buscar"/>
-    </form>
 
     <?php
         
         require("/home/grupo7/Sites/config/connection.php");
         $origen = $_POST["origen"]; 
         $destino = $_POST["destino"];
-        $fecha = $_POST["fecha"];
+        $fecha = $_POST["fecha_inicio"];
  
         
         $query_vuelos = "SELECT vuelo_id, fecha_salida, a_salida, fecha_llegada, a_llegada

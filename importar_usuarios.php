@@ -29,7 +29,7 @@ function crear_usuarios_compania($db) {
         $result1 -> execute();
         $tabla1 = $result1 -> fetchAll();
         if (empty($tabla1)) {
-            $pswd = $tupla[0]; //str_shuffle($tupla[0]);
+            $pswd = str_shuffle($tupla[0]);
             $query2 = "INSERT INTO Usuarios VALUES ('$id', '$tupla[1]', '$pswd', 'Compania')";
             $result2 = $db -> prepare($query2);
             $result2 -> execute();

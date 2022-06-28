@@ -1,6 +1,7 @@
 <?php
 
-        require("conection.php");
+        session_start();
+        require("/home/grupo7/Sites/config/connection.php");
     
         $estado = 'pendiente';
         // obtengo los datos del formulario 
